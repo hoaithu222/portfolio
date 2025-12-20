@@ -1,0 +1,192 @@
+{
+    "profile": {
+      "name": "Vũ Thị Hoài Thu",
+      "role": "Lập trình viên Front-end",
+      "phone": "0382329310",
+      "email": "thu601925@gmail.com",
+      "address": "Tân Triều, Thanh Trì, Hà Nội",
+      "website": "https://github.com/hoaithu222",
+      "socials": [
+        {
+            "platform": "GitHub",
+            "url": "https://github.com/hoaithu222",
+            "icon": "FaGithub"
+          },
+          {
+            "platform": "LinkedIn",
+            "url": "https://www.linkedin.com/in/hoài-thu/",
+            "icon": "FaLinkedin"
+          },
+          {
+            "platform": "Facebook",
+            "url": "https://www.facebook.com/vu.thi.hoai.thu.2",
+            "icon": "FaFacebook"
+          }
+      ]
+    },
+    "nav": {
+      "home": "Trang chủ",
+      "skills": "Kỹ năng",
+      "experience": "Kinh nghiệm",
+      "projects": "Dự án",
+      "contact": "Liên hệ"
+    },
+    "hero": {
+      "greeting": "Xin chào, mình là Hoài Thu",
+      "headline": "Xây dựng Ứng dụng Web Hiệu năng cao & Dashboard Tương tác.",
+      "sub_headline": "Kết hợp tư duy logic của lập trình và cảm quan thẩm mỹ để xây dựng những trải nghiệm số ấn tượng, tốc độ và thân thiện với người dùng.",
+      "cta_primary": "Liên hệ ngay",
+      "cta_secondary": "Tải CV của tôi"
+    },
+    "services": {
+  "title": "Kỹ năng chuyên môn",
+  "subtitle": "Cung cấp các giải pháp Front-end toàn diện, tập trung vào tính mở rộng, hiệu năng và trải nghiệm người dùng.",
+  "items": [
+    {
+      "icon": "FaLaptopCode",
+      "title": "Phát triển Ứng dụng Web",
+      "description": "Kiến trúc và xây dựng các ứng dụng Single Page (SPA) và PWA bảo mật, có khả năng mở rộng cao sử dụng hệ sinh thái React (Next.js, TypeScript) được \"may đo\" theo nhu cầu doanh nghiệp."
+    },
+    {
+      "icon": "FaChartLine",
+      "title": "Trực quan hóa Dữ liệu & Dashboard",
+      "description": "Biến dữ liệu thô phức tạp thành thông tin quản trị có giá trị thông qua các biểu đồ tương tác. Có kinh nghiệm xử lý tập dữ liệu lớn hiệu quả với Highcharts/Chart.js."
+    },
+    {
+      "icon": "FaBolt",
+      "title": "Hệ thống Tài chính Thời gian thực",
+      "description": "Chuyên sâu xây dựng các nền tảng giao dịch độ trễ thấp. Tích hợp WebSocket cho bảng giá trực tuyến, sổ lệnh và thông báo tức thì mà không làm giảm hiệu năng hệ thống."
+    },
+    {
+      "icon": "FaShoppingCart",
+      "title": "Giải pháp Thương mại điện tử",
+      "description": "Phát triển các sàn thương mại điện tử đa nhà cung cấp với tính năng quản lý giỏ hàng mượt mà, tích hợp cổng thanh toán bảo mật và bộ lọc sản phẩm động."
+    },
+    {
+      "icon": "FaPaintBrush",
+      "title": "Kỹ thuật Giao diện UI/UX",
+      "description": "Chuyển đổi bản thiết kế Figma thành giao diện web chuẩn pixel, responsive trên mọi thiết bị và tuân thủ tiêu chuẩn tiếp cận (Accessibility) sử dụng TailwindCSS, Radix UI."
+    },
+    {
+      "icon": "FaRocket",
+      "title": "Tối ưu hóa Hiệu năng & SEO",
+      "description": "Kiểm toán và tăng tốc độ ứng dụng (Core Web Vitals), triển khai chiến lược SSR/ISR để tối ưu thứ hạng tìm kiếm (SEO) và kỹ thuật Code Splitting để giảm thời gian tải trang."
+    }
+  ]
+},
+    "summary": {
+      "title": "Tóm tắt chuyên môn",
+      "content": "Lập trình viên Front-end với hơn 2 năm kinh nghiệm chuyên sâu trong việc xây dựng các nền tảng giao dịch tài chính và ứng dụng thương mại điện tử quy mô lớn. Có kinh nghiệm thực tế tham gia phát triển hệ thống cho các công ty chứng khoán hàng đầu (VPS, ACB) và các hệ thống quản trị (Admin Dashboard) hiệu năng cao. Thành thạo hệ sinh thái React (Next.js, Redux) với tư duy mạnh mẽ về tối ưu hóa hiệu năng, xử lý dữ liệu thời gian thực và tích hợp Backend (Node.js)."
+    },
+    "skills": {
+      "title": "Năng lực kỹ thuật",
+      "subtitle": "Các công nghệ và kỹ năng tôi sử dụng để xây dựng ứng dụng web hiện đại",
+      "languages": "JavaScript, TypeScript",
+      "frontend": "ReactJS, NextJS, Redux Toolkit, Redux Saga, TailwindCSS, React Router, Custom Hooks, HTML5, CSS",
+      "ui_libraries": "Material UI (MUI), Ant Design, Radix UI, ShadCN UI, React Hook Form",
+      "backend": "NodeJS, NestJS, ExpressJS, PostgreSQL, Prisma ORM",
+      "soft_skills": ["Giải quyết vấn đề", "Làm việc nhóm", "Quy trình Agile/Scrum", "Quản lý thời gian", "Tự nghiên cứu"]
+    },
+    "experience": {
+      "title": "Kinh nghiệm làm việc",
+      "subtitle": "Hành trình phát triển và những dự án đã thực hiện",
+      "jobs": [
+        {
+          "id": "goline_vps",
+          "company": "Goline Corporation",
+          "position": "Lập trình viên Front-end",
+          "duration": "01/2025 - Hiện tại",
+          "project": "Nền tảng giao dịch web cho Chứng khoán VPS",
+          "description": "Thành viên nòng cốt phát triển nền tảng giao dịch chứng khoán lớn nhất Việt Nam, đảm bảo tính ổn định và hiệu năng thời gian thực.",
+          "responsibilities": [
+            "Xây dựng và duy trì các phân hệ tài chính quan trọng: Chuyển tiền, Xác thực OTP, Báo cáo Lãi/Lỗ và Quản lý danh mục đầu tư.",
+            "Phát triển tính năng Bảng giá & Dữ liệu thị trường thời gian thực (Real-time Market Data) sử dụng Socket.io.",
+            "Tối ưu hóa hiệu năng UI/UX sử dụng React.memo, useMemo và kỹ thuật ảo hóa danh sách (react-window).",
+            "Triển khai đa ngôn ngữ (i18next) và xử lý xác thực form chặt chẽ với Yup.",
+            "Phối hợp chặt chẽ với đội ngũ Backend và QA theo quy trình Agile và Git flow."
+          ],
+          "tech_stack": "ReactJS, Redux Toolkit, Redux-Saga, TailwindCSS, Socket.io, Radix UI",
+          "link": "https://smartoneweb.vps.com.vn/"
+        },
+        {
+          "id": "goline_admin",
+          "company": "Goline Corporation",
+          "position": "Lập trình viên Front-end",
+          "duration": "09/2024 - 12/2024",
+          "project": "Cổng thông tin quản trị nội bộ (Internal Admin Portal)",
+          "description": "Phát triển cổng quản trị nội bộ nhằm chuẩn hóa quy trình vận hành và quản lý của công ty.",
+          "responsibilities": [
+            "Thiết kế Dashboard trực quan và hệ thống phân quyền người dùng (RBAC) giúp bảo mật dữ liệu.",
+            "Cải thiện khả năng bảo trì và mở rộng hệ thống thông qua kiến trúc module hóa và tái sử dụng component.",
+            "Tích hợp với Spring Boot Backend để quản lý các mô-đun sản phẩm và dịch vụ."
+          ],
+          "tech_stack": "JHipster, ReactJS, Spring Boot, PostgreSQL"
+        },
+        {
+          "id": "softvision_shop",
+          "company": "Softvision Technology Co., Ltd.",
+          "position": "Lập trình viên Front-end",
+          "duration": "04/2023 - 07/2024",
+          "project": "ShopOnline – Nền tảng thương mại điện tử",
+          "description": "Phát triển sàn thương mại điện tử đa nhà cung cấp với đầy đủ tính năng thanh toán online và theo dõi đơn hàng.",
+          "responsibilities": [
+            "Phát triển các luồng người dùng chính: Trang chủ, Chi tiết sản phẩm, Giỏ hàng và Thanh toán.",
+            "Quản lý trạng thái toàn cục phức tạp (Giỏ hàng, Yêu thích, Đơn hàng) bằng Redux Toolkit và Saga.",
+            "Tối ưu hóa SEO và tốc độ tải trang với Next.js (ISR/SSR) và kỹ thuật Lazy loading.",
+            "Xây dựng Admin Dashboard tích hợp biểu đồ phân tích doanh số và theo dõi đơn hàng thời gian thực."
+          ],
+          "tech_stack": "Next.js, ReactJS, Redux, TailwindCSS, TypeScript, NestJS, Cloudinary"
+        },
+        {
+          "id": "softvision_techstore",
+          "company": "Softvision Technology Co., Ltd.",
+          "position": "Lập trình viên Front-end",
+          "duration": "10/2023 - 03/2024",
+          "project": "TechStore – Sàn giao dịch thiết bị điện tử",
+          "description": "Xây dựng Dashboard theo dõi chi tiêu, đầu tư và hiệu suất danh mục với dữ liệu phân tích thời gian thực.",
+          "responsibilities": [
+            "Trực quan hóa dữ liệu tài chính phức tạp thông qua các biểu đồ tương tác sử dụng Chart.js.",
+            "Đồng bộ hóa dữ liệu thời gian thực thông qua WebSocket và tối ưu luồng dữ liệu API.",
+            "Tích hợp chế độ giao diện Sáng/Tối (Dark mode) và đa ngôn ngữ để nâng cao trải nghiệm người dùng."
+          ],
+          "tech_stack": "ReactJS, Tailwind CSS, Redux Toolkit, NestJS, Prisma ORM"
+        }
+      ]
+    },
+    "education": {
+      "title": "Học vấn",
+      "school": "Học viện Kỹ thuật Mật mã (KMA)",
+      "major": "Chuyên ngành: Công nghệ thông tin"
+    },
+    "personal": {
+      "hobbies_title": "Sở thích cá nhân",
+      "hobbies_list": ["Lập trình & Viết Blog công nghệ", "Thị trường tài chính", "Du lịch", "Âm nhạc"]
+    },
+    "footer": {
+      "copyright": "© 2025 Vũ Thị Hoài Thu. Xây dựng bằng NextJS và Đam mê."
+    },
+    "contact": {
+      "title": "Liên hệ",
+      "subtitle": "Hãy liên hệ với tôi nếu bạn có bất kỳ câu hỏi nào",
+      "connect_title": "Kết nối với tôi",
+      "phone_label": "Điện thoại",
+      "email_label": "Email",
+      "address_label": "Địa chỉ",
+      "website_label": "Website",
+      "form": {
+        "title": "Gửi tin nhắn",
+        "name_label": "Tên của bạn",
+        "name_placeholder": "Nhập tên của bạn",
+        "email_label": "Email",
+        "email_placeholder": "your.email@example.com",
+        "subject_label": "Chủ đề",
+        "subject_placeholder": "Chủ đề tin nhắn",
+        "message_label": "Tin nhắn",
+        "message_placeholder": "Nhập tin nhắn của bạn...",
+        "submit": "Gửi tin nhắn",
+        "submitting": "Đang gửi...",
+        "success": "Tin nhắn đã được gửi thành công! Tôi sẽ phản hồi sớm nhất có thể.",
+        "error": "Có lỗi xảy ra. Vui lòng thử lại sau hoặc liên hệ trực tiếp qua email."
+      }
+    }
+  }

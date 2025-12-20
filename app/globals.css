@@ -1,0 +1,132 @@
+@import "tailwindcss";
+@import "./theme-vars.css";
+
+:root {
+  background: var(--bg-primary);
+  color: var(--text-primary);
+}
+
+@theme inline {
+  --color-brand-pink-1: var(--brand-pink-1);
+  --color-brand-pink-2: var(--brand-pink-2);
+  --color-brand-pink-3: var(--brand-pink-3);
+  --color-brand-pink-4: var(--brand-pink-4);
+  --color-brand-pink-5: var(--brand-pink-5);
+
+  --color-brand-blue-1: var(--brand-blue-1);
+  --color-brand-blue-2: var(--brand-blue-2);
+  --color-brand-blue-3: var(--brand-blue-3);
+  --color-brand-blue-4: var(--brand-blue-4);
+  --color-brand-blue-5: var(--brand-blue-5);
+
+  --color-bg-primary: var(--bg-primary);
+  --color-bg-secondary: var(--bg-secondary);
+  --color-bg-card: var(--bg-card);
+
+  --color-text-primary: var(--text-primary);
+  --color-text-secondary: var(--text-secondary);
+  --color-text-muted: var(--text-muted);
+  --color-text-inverse: var(--text-inverse);
+  --color-text-link: var(--text-link);
+
+  --color-border-default: var(--border-default);
+  --color-border-focus: var(--border-focus);
+
+  --shadow-pink-glow: var(--shadow-pink-glow);
+  --shadow-blue-glow: var(--shadow-blue-glow);
+}
+
+body {
+  background: var(--bg-primary);
+  color: var(--text-primary);
+  font-family: Arial, Helvetica, sans-serif;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+@keyframes gradient {
+  0%, 100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+}
+
+.animate-gradient {
+  animation: gradient 3s ease infinite;
+  background-size: 200% auto;
+}
+
+/* Custom Scrollbar Styles */
+/* Webkit browsers (Chrome, Safari, Edge) */
+::-webkit-scrollbar {
+  width: 12px;
+  height: 12px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--bg-secondary);
+  border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(135deg, var(--brand-pink-1), var(--brand-blue-1));
+  border-radius: 10px;
+  border: 2px solid var(--bg-secondary);
+  box-shadow: 0 0 10px rgba(255, 95, 162, 0.3);
+  transition: all 0.3s ease;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(135deg, var(--brand-pink-2), var(--brand-blue-2));
+  box-shadow: 0 0 15px rgba(255, 95, 162, 0.5), 0 0 10px rgba(59, 130, 246, 0.3);
+  transform: scale(1.1);
+}
+
+::-webkit-scrollbar-thumb:active {
+  background: linear-gradient(135deg, var(--brand-pink-3), var(--brand-blue-3));
+}
+
+::-webkit-scrollbar-corner {
+  background: var(--bg-secondary);
+}
+
+/* Firefox */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(255, 95, 162, 0.8) var(--bg-secondary);
+}
+
+html {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(255, 95, 162, 0.8) rgba(0, 0, 0, 0.1);
+}
+
+/* Smooth scrolling */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Custom scrollbar for specific containers */
+.scrollbar-custom::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+.scrollbar-custom::-webkit-scrollbar-track {
+  background: transparent;
+  border-radius: 10px;
+}
+
+.scrollbar-custom::-webkit-scrollbar-thumb {
+  background: linear-gradient(135deg, var(--brand-pink-1), var(--brand-blue-1));
+  border-radius: 10px;
+  opacity: 0.6;
+  transition: opacity 0.3s ease;
+}
+
+.scrollbar-custom::-webkit-scrollbar-thumb:hover {
+  opacity: 1;
+  box-shadow: 0 0 10px rgba(255, 95, 162, 0.5);
+}

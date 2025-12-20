@@ -1,0 +1,192 @@
+{
+    "profile": {
+      "name": "Vu Thi Hoai Thu",
+      "role": "Front-end Developer",
+      "phone": "0382329310",
+      "email": "thu601925@gmail.com",
+      "address": "Tan Trieu, Thanh Tri, Hanoi",
+      "website": "https://hoaithu222.github.io/",
+      "socials": [
+        {
+          "platform": "GitHub",
+          "url": "https://github.com/hoaithu222",
+          "icon": "FaGithub"
+        },
+        {
+          "platform": "LinkedIn",
+          "url": "https://www.linkedin.com/in/hoài-thu/",
+          "icon": "FaLinkedin"
+        },
+        {
+          "platform": "Facebook",
+          "url": "https://www.facebook.com/vu.thi.hoai.thu.2",
+          "icon": "FaFacebook"
+        }
+      ]
+    },
+    "nav": {
+      "home": "Home",
+      "skills": "Skills",
+      "experience": "Experience",
+      "projects": "Projects",
+      "contact": "Contact"
+    },
+    "hero": {
+      "greeting": "Hi, I'm Hoai Thu",
+      "headline": "Building High-Performance Web Applications & Interactive Dashboards.",
+      "sub_headline": "Blending logical engineering with aesthetic sensibility to build digital experiences that are impressive, fast, and deeply user-centric.",
+      "cta_primary": "Contact Me",
+      "cta_secondary": "Download CV"
+    },
+"services": {
+  "title": "My Expertise",
+  "subtitle": "Delivering end-to-end frontend solutions with a focus on scalability, performance, and user experience.",
+  "items": [
+    {
+      "icon": "FaLaptopCode",
+      "title": "Custom Web App Development",
+      "description": "Architecting secure and scalable Single Page Applications (SPA) and Progressive Web Apps (PWA) using the modern React ecosystem (Next.js, TypeScript) tailored to business needs."
+    },
+    {
+      "icon": "FaChartLine",
+      "title": "Data Visualization & Dashboards",
+      "description": "Transforming complex raw data into actionable insights through interactive admin portals and charts. Expertise in handling large datasets efficiently with Highcharts/Chart.js."
+    },
+    {
+      "icon": "FaBolt",
+      "title": "Real-time Financial Systems",
+      "description": "Specialized in building low-latency trading platforms. Implementing WebSocket integration for real-time price boards, order books, and instant notifications without performance drops."
+    },
+    {
+      "icon": "FaShoppingCart",
+      "title": "E-commerce Solutions",
+      "description": "Developing robust multi-vendor marketplaces with seamless shopping cart management, secure payment gateway integration, and dynamic product filtering."
+    },
+    {
+      "icon": "FaPaintBrush",
+      "title": "UI/UX Engineering",
+      "description": "Translating Figma designs into pixel-perfect, responsive, and accessible (WCAG) interfaces using TailwindCSS, Ant Design, or Radix UI that look great on any device."
+    },
+    {
+      "icon": "FaRocket",
+      "title": "Performance & SEO Optimization",
+      "description": "Auditing and boosting application speed (Core Web Vitals), implementing SSR/ISR strategies for better SEO ranking, and code splitting for faster load times."
+    }
+  ]
+},
+    "summary": {
+      "title": "Professional Summary",
+      "content": "Experienced Front-end Developer with over 2 years of expertise in building large-scale trading platforms and modern e-commerce applications. Proven track record in contributing to Vietnam's leading securities systems (VPS, ACB) and developing high-performance admin dashboards. Proficient in the React ecosystem (Next.js, Redux) with a strong focus on scalability, real-time data processing, and backend integration using Node.js."
+    },
+    "skills": {
+      "title": "Technical Proficiency",
+      "subtitle": "Technologies and skills I use to build modern web applications",
+      "languages": "JavaScript, TypeScript",
+      "frontend": "ReactJS, NextJS, Redux Toolkit, Redux Saga, TailwindCSS, React Router, Custom Hooks, HTML5, CSS",
+      "ui_libraries": "Material UI (MUI), Ant Design, Radix UI, ShadCN UI, React Hook Form",
+      "backend": "NodeJS (NestJS, ExpressJS), PostgreSQL, Prisma ORM",
+      "soft_skills": ["Problem Solving", "Team Collaboration", "Agile & Scrum", "Time Management", "Self-learning"]
+    },
+    "experience": {
+      "title": "Work Experience",
+      "subtitle": "Development journey and completed projects",
+      "jobs": [
+        {
+          "id": "goline_vps",
+          "company": "Goline Corporation",
+          "position": "Front-end Developer",
+          "duration": "Jan 2025 - Present",
+          "project": "Web Trading Platform for VPS Securities",
+          "description": "Core developer for Vietnam’s largest securities trading platform, ensuring high availability and real-time performance.",
+          "responsibilities": [
+            "Developed critical financial modules including Fund Transfers, OTP Authentication, P&L Reporting, and Portfolio Management.",
+            "Implemented real-time Market Data & Price Board features using WebSocket (Socket.io) for instant trading updates.",
+            "Optimized application performance and rendering speed using React.memo, useMemo, and virtualization with react-window.",
+            "Ensured seamless UX with multi-language support (i18next) and robust form validation using Yup.",
+            "Collaborated in an Agile environment using Git flow for code reviews and version control."
+          ],
+          "tech_stack": "ReactJS, Redux Toolkit, Redux-Saga, TailwindCSS, Socket.io, Radix UI",
+          "link": "https://smartoneweb.vps.com.vn/"
+        },
+        {
+          "id": "goline_admin",
+          "company": "Goline Corporation",
+          "position": "Front-end Developer",
+          "duration": "Sep 2024 - Dec 2024",
+          "project": "Internal Admin Portal",
+          "description": "Built a comprehensive admin portal to streamline internal operations and management workflows.",
+          "responsibilities": [
+            "Designed interactive dashboards and implemented Role-Based Access Control (RBAC) for secure user management.",
+            "Enhanced system maintainability by adopting a modular architecture and creating reusable components.",
+            "Integrated with Spring Boot backend to manage products and service modules efficiently."
+          ],
+          "tech_stack": "JHipster, ReactJS, Spring Boot, PostgreSQL"
+        },
+        {
+          "id": "softvision_shop",
+          "company": "Softvision Technology Co., Ltd.",
+          "position": "Front-end Developer",
+          "duration": "Apr 2023 - Jul 2024",
+          "project": "ShopOnline – E-commerce Platform",
+          "description": "Developed a full-featured multi-vendor marketplace supporting diverse product categories and online payments.",
+          "responsibilities": [
+            "Engineered key user flows: Homepage, Product Details, Shopping Cart, and Secure Checkout.",
+            "Managed complex global states (Cart, Wishlist, Orders) utilizing Redux Toolkit and Saga.",
+            "Boosted SEO and load times with Next.js SSR/ISR strategies and lazy loading techniques.",
+            "Built a dedicated Admin Dashboard featuring real-time sales analytics and order tracking using Chart.js."
+          ],
+          "tech_stack": "Next.js, ReactJS, Redux, TailwindCSS, TypeScript, NestJS, Cloudinary"
+        },
+        {
+          "id": "softvision_techstore",
+          "company": "Softvision Technology Co., Ltd.",
+          "position": "Front-end Developer",
+          "duration": "Oct 2023 - Mar 2024",
+          "project": "TechStore – Electronics Marketplace",
+          "description": "Created a responsive dashboard for tracking investments and portfolio performance with real-time analytics.",
+          "responsibilities": [
+            "Visualized complex financial data through interactive charts using React.js and Chart.js.",
+            "Implemented real-time data synchronization via WebSocket and RESTful APIs.",
+            "Integrated dark/light mode theming and multi-language support to enhance user accessibility."
+          ],
+          "tech_stack": "ReactJS, Tailwind CSS, Redux Toolkit, NestJS, Prisma ORM"
+        }
+      ]
+    },
+    "education": {
+      "title": "Education",
+      "school": "Academy of Cryptography Techniques (KMA)",
+      "major": "Major: Information Technology"
+    },
+    "personal": {
+      "hobbies_title": "Interests",
+      "hobbies_list": ["Coding & Tech Blogging", "Financial Markets", "Travel", "Music"]
+    },
+    "footer": {
+      "copyright": "© 2025 Vu Thi Hoai Thu. Built with NextJS & Passion."
+    },
+    "contact": {
+      "title": "Contact",
+      "subtitle": "Feel free to reach out if you have any questions",
+      "connect_title": "Connect with me",
+      "phone_label": "Phone",
+      "email_label": "Email",
+      "address_label": "Address",
+      "website_label": "Website",
+      "form": {
+        "title": "Send a message",
+        "name_label": "Your name",
+        "name_placeholder": "Enter your name",
+        "email_label": "Email",
+        "email_placeholder": "your.email@example.com",
+        "subject_label": "Subject",
+        "subject_placeholder": "Message subject",
+        "message_label": "Message",
+        "message_placeholder": "Enter your message...",
+        "submit": "Send message",
+        "submitting": "Sending...",
+        "success": "Message sent successfully! I'll get back to you as soon as possible.",
+        "error": "An error occurred. Please try again later or contact me directly via email."
+      }
+    }
+  }
