@@ -5,7 +5,7 @@
       "phone": "0382329310",
       "email": "thu601925@gmail.com",
       "address": "Tân Triều, Thanh Trì, Hà Nội",
-      "website": "https://github.com/hoaithu222",
+      "website": "https://thudev222.vercel.app",
       "socials": [
         {
             "platform": "GitHub",
@@ -29,14 +29,18 @@
       "skills": "Kỹ năng",
       "experience": "Kinh nghiệm",
       "projects": "Dự án",
-      "contact": "Liên hệ"
+      "contact": "Liên hệ",
+      "light_mode": "Chế độ sáng",
+      "dark_mode": "Chế độ tối",
+      "switch_to_english": "Chuyển sang tiếng Anh",
+      "switch_to_vietnamese": "Chuyển sang tiếng Việt"
     },
     "hero": {
       "greeting": "Xin chào, mình là Hoài Thu",
-      "headline": "Xây dựng Ứng dụng Web Hiệu năng cao & Dashboard Tương tác.",
+      "headline": "Xây dựng ứng dụng web hiệu năng cao & dashboard tương tác.",
       "sub_headline": "Kết hợp tư duy logic của lập trình và cảm quan thẩm mỹ để xây dựng những trải nghiệm số ấn tượng, tốc độ và thân thiện với người dùng.",
       "cta_primary": "Liên hệ ngay",
-      "cta_secondary": "Tải CV của tôi"
+      "cta_secondary": "Tải CV của mình"
     },
     "services": {
   "title": "Kỹ năng chuyên môn",
@@ -49,27 +53,27 @@
     },
     {
       "icon": "FaChartLine",
-      "title": "Trực quan hóa Dữ liệu & Dashboard",
+      "title": "Trực quan hóa dữ liệu & dashboard",
       "description": "Biến dữ liệu thô phức tạp thành thông tin quản trị có giá trị thông qua các biểu đồ tương tác. Có kinh nghiệm xử lý tập dữ liệu lớn hiệu quả với Highcharts/Chart.js."
     },
     {
       "icon": "FaBolt",
-      "title": "Hệ thống Tài chính Thời gian thực",
+      "title": "Hệ thống tài chính thời gian thực",
       "description": "Chuyên sâu xây dựng các nền tảng giao dịch độ trễ thấp. Tích hợp WebSocket cho bảng giá trực tuyến, sổ lệnh và thông báo tức thì mà không làm giảm hiệu năng hệ thống."
     },
     {
       "icon": "FaShoppingCart",
-      "title": "Giải pháp Thương mại điện tử",
+      "title": "Giải pháp thương mại điện tử",
       "description": "Phát triển các sàn thương mại điện tử đa nhà cung cấp với tính năng quản lý giỏ hàng mượt mà, tích hợp cổng thanh toán bảo mật và bộ lọc sản phẩm động."
     },
     {
       "icon": "FaPaintBrush",
-      "title": "Kỹ thuật Giao diện UI/UX",
+      "title": "Kỹ thuật giao diện UI/UX",
       "description": "Chuyển đổi bản thiết kế Figma thành giao diện web chuẩn pixel, responsive trên mọi thiết bị và tuân thủ tiêu chuẩn tiếp cận (Accessibility) sử dụng TailwindCSS, Radix UI."
     },
     {
       "icon": "FaRocket",
-      "title": "Tối ưu hóa Hiệu năng & SEO",
+      "title": "Tối ưu hóa hiệu năng & SEO",
       "description": "Kiểm toán và tăng tốc độ ứng dụng (Core Web Vitals), triển khai chiến lược SSR/ISR để tối ưu thứ hạng tìm kiếm (SEO) và kỹ thuật Code Splitting để giảm thời gian tải trang."
     }
   ]
@@ -95,7 +99,7 @@
           "id": "goline_vps",
           "company": "Goline Corporation",
           "position": "Lập trình viên Front-end",
-          "duration": "01/2025 - Hiện tại",
+          "duration": "01/2025 - 10/2025",
           "project": "Nền tảng giao dịch web cho Chứng khoán VPS",
           "description": "Thành viên nòng cốt phát triển nền tảng giao dịch chứng khoán lớn nhất Việt Nam, đảm bảo tính ổn định và hiệu năng thời gian thực.",
           "responsibilities": [
@@ -155,7 +159,7 @@
     },
     "education": {
       "title": "Học vấn",
-      "school": "Học viện Kỹ thuật Mật mã (KMA)",
+      "school": "Học viện kỹ thuật mật mã (KMA)",
       "major": "Chuyên ngành: Công nghệ thông tin"
     },
     "personal": {

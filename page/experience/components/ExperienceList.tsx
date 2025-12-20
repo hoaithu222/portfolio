@@ -228,7 +228,7 @@ function ExperienceCard({ job, index, isLast }: ExperienceCardProps) {
         />
 
         {/* Content */}
-        <div className="relative z-10">
+        <div className="relative z-10 text-text-secondary">
           {/* Header */}
           <div className="flex items-start gap-6 mb-6">
             {/* Icon */}
@@ -245,7 +245,7 @@ function ExperienceCard({ job, index, isLast }: ExperienceCardProps) {
               }}
             >
               <div 
-                className="relative z-10"
+                className="relative z-10 text-text-secondary"
                 style={{ color: isHovered ? gradientTo : gradientFrom }}
               >
                 {getProjectIcon()}
@@ -378,7 +378,7 @@ function ExperienceCard({ job, index, isLast }: ExperienceCardProps) {
                     })
                   }}
                 >
-                  <span className="relative z-10">{tech}</span>
+                  <span className="relative z-10 text-text-secondary">{tech}</span>
                   {/* Shine effect */}
                   <div 
                     className="absolute inset-0 -translate-x-full group-hover/tech:translate-x-full transition-transform duration-700"

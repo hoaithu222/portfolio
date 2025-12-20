@@ -147,7 +147,7 @@ export default function ContactForm() {
         }}
       />
 
-      <div className="relative z-10">
+      <div className="relative z-10 text-text-secondary">
         <h3 className="text-2xl font-bold text-brand-pink-1 mb-6 group-hover:text-brand-blue-1 transition-colors duration-300">
           {t('title')}
         </h3>

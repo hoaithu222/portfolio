@@ -374,7 +374,7 @@ function SkillCategory({ title, skills, icon, gradientFrom, gradientTo, delay }:
               <div 
                 className={`absolute inset-0 bg-gradient-to-r ${gradientFrom} ${gradientTo} opacity-0 group-hover/tag:opacity-30 transition-opacity duration-300`}
               />
-              <span className="relative z-10">{skill}</span>
+              <span className="relative z-10 text-text-secondary">{skill}</span>
               
               {/* Enhanced shine effect */}
               <div 
@@ -549,7 +549,7 @@ export default function SkillsList() {
                 }}
               >
                 <FaLightbulb className="inline-block mr-2 text-brand-pink-1 group-hover/skill:scale-125 transition-transform duration-300" />
-                <span className="relative z-10">{skill}</span>
+                <span className="relative z-10 text-text-secondary">{skill}</span>
                 
                 {/* Shine effect */}
                 <div 
