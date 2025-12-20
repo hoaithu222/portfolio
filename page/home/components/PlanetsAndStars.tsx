@@ -39,7 +39,12 @@ function PlanetsAndStars() {
       baseSizes[i] = baseSize
     }
 
-    return { positions, sizes, baseSizes }
+    // Tạo geometry với attributes
+    const geometry = new THREE.BufferGeometry()
+    geometry.setAttribute('position', new THREE.BufferAttribute(positions, 3))
+    geometry.setAttribute('size', new THREE.BufferAttribute(sizes, 1))
+
+    return { geometry, positions, sizes, baseSizes }
   }, [])
 
   useEffect(() => {
@@ -98,11 +103,7 @@ function PlanetsAndStars() {
   return (
     <group>
       {/* Ngôi sao - dùng AdditiveBlending + size lớn hơn để glow mạnh với Bloom */}
-      <points ref={starsRef}>
-        <bufferGeometry>
-          <bufferAttribute attach="attributes-position" count={stars.positions.length / 3} array={stars.positions} itemSize={3} />
-          <bufferAttribute attach="attributes-size" count={stars.sizes.length} array={stars.sizes} itemSize={1} />
-        </bufferGeometry>
+      <points ref={starsRef} geometry={stars.geometry}>
         <pointsMaterial
           size={0.25} // Tăng size gốc để glow to hơn
           color="#FFFFFF"

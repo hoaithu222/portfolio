@@ -24,7 +24,12 @@ function Stars() {
       sizes[i] = Math.random() * 2 + 0.5
     }
     
-    return { positions, sizes }
+    // Tạo geometry với attributes
+    const geometry = new THREE.BufferGeometry()
+    geometry.setAttribute('position', new THREE.BufferAttribute(positions, 3))
+    geometry.setAttribute('size', new THREE.BufferAttribute(sizes, 1))
+    
+    return { geometry, positions, sizes }
   }, [])
   
   // Animation: làm ngôi sao di chuyển và nhấp nháy
@@ -55,21 +60,7 @@ function Stars() {
   })
   
   return (
-    <points ref={ref}>
-      <bufferGeometry>
-        <bufferAttribute
-          attach="attributes-position"
-          count={particles.positions.length / 3}
-          array={particles.positions}
-          itemSize={3}
-        />
-        <bufferAttribute
-          attach="attributes-size"
-          count={particles.sizes.length}
-          array={particles.sizes}
-          itemSize={1}
-        />
-      </bufferGeometry>
+    <points ref={ref} geometry={particles.geometry}>
       <pointsMaterial
         size={0.1}
         color="#FFFFFF"
