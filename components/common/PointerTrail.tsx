@@ -87,7 +87,7 @@ export default function HeartGradientTrail() {
         return (
           <div
             key={idx}
-            ref={(el) => (trailRefs.current[idx] = el)}
+            ref={(el) => { trailRefs.current[idx] = el }}
             className="pointer-events-none"
             style={{
               position: 'fixed',
