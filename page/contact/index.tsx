@@ -30,7 +30,7 @@ function FloatingElements({ floatingElementsRef }: { floatingElementsRef: React.
       height: getRandom() * 2.5 + 1.2,
       opacity: getRandom() * 0.5 + 0.3,
       blur: getRandom() * 10 + 5,
-      color: i % 3 === 0 ? '#FF5FA2' : i % 3 === 1 ? '#3B82F6' : '#FFB3D5',
+      color: i % 3 === 0 ? '#E91E63' : i % 3 === 1 ? '#1976D2' : '#F48FB1',
       delay: getRandom() * 2,
     }))
   }, [])
@@ -79,8 +79,8 @@ function AnimatedGrid() {
       className="absolute inset-0 opacity-[0.02]"
       style={{
         backgroundImage: `
-          linear-gradient(rgba(255, 95, 162, 0.2) 1px, transparent 1px),
-          linear-gradient(90deg, rgba(59, 130, 246, 0.2) 1px, transparent 1px)
+          linear-gradient(rgba(233, 30, 99, 0.15) 1px, transparent 1px),
+          linear-gradient(90deg, rgba(25, 118, 210, 0.15) 1px, transparent 1px)
         `,
         backgroundSize: '140px 140px',
       }}
@@ -185,13 +185,13 @@ export default function ContactPage() {
       ref={sectionRef}
       className="relative min-h-screen py-24 bg-gradient-to-br from-bg-primary via-bg-secondary to-bg-primary overflow-hidden"
       style={{
-        background: 'radial-gradient(ellipse at top, rgba(255, 95, 162, 0.08) 0%, transparent 50%), radial-gradient(ellipse at bottom, rgba(59, 130, 246, 0.08) 0%, transparent 50%)',
+        background: 'radial-gradient(ellipse at top, rgba(233, 30, 99, 0.12) 0%, transparent 50%), radial-gradient(ellipse at bottom, rgba(25, 118, 210, 0.12) 0%, transparent 50%)',
       }}
     >
       {/* Animated gradient orbs */}
-      <div className="gradient-orb absolute top-0 left-1/4 w-[400px] h-[400px] bg-brand-pink-1/18 rounded-full blur-[100px]" />
-      <div className="gradient-orb absolute bottom-0 right-1/4 w-[400px] h-[400px] bg-brand-blue-1/18 rounded-full blur-[100px]" />
-      <div className="gradient-orb absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-brand-pink-1/10 rounded-full blur-[130px]" />
+      <div className="gradient-orb absolute top-0 left-1/4 w-[400px] h-[400px] bg-brand-pink-1/25 dark:bg-brand-pink-1/18 rounded-full blur-[100px]" />
+      <div className="gradient-orb absolute bottom-0 right-1/4 w-[400px] h-[400px] bg-brand-blue-1/25 dark:bg-brand-blue-1/18 rounded-full blur-[100px]" />
+      <div className="gradient-orb absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-brand-pink-1/15 dark:bg-brand-pink-1/10 rounded-full blur-[130px]" />
 
       {/* Floating decorative elements */}
       <FloatingElements floatingElementsRef={floatingElementsRef} />
@@ -209,7 +209,7 @@ export default function ContactPage() {
             ref={titleRef}
             className="text-6xl md:text-7xl lg:text-8xl font-black mb-6 bg-gradient-to-r from-brand-pink-1 via-brand-blue-1 via-brand-pink-1 to-brand-blue-1 bg-clip-text text-transparent bg-[length:200%_auto] opacity-100"
             style={{
-              textShadow: '0 0 40px rgba(255, 95, 162, 0.3), 0 0 80px rgba(59, 130, 246, 0.2)',
+              textShadow: '0 0 40px rgba(233, 30, 99, 0.4), 0 0 80px rgba(25, 118, 210, 0.3)',
               visibility: 'visible',
             }}
           >
@@ -230,12 +230,12 @@ export default function ContactPage() {
         {/* Contact Content */}
         <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-10 opacity-100" style={{ visibility: 'visible' }}>
           {/* Contact Info */}
-          <div className="order-2 lg:order-1">
+          <div className="order-1 lg:order-1">
             <ContactInfo />
           </div>
 
           {/* Contact Form */}
-          <div className="order-1 lg:order-2">
+          <div className="order-2 lg:order-2">
             <ContactForm />
           </div>
         </div>

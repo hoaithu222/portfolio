@@ -63,109 +63,24 @@ function ExperienceCard({ job, index, isLast }: ExperienceCardProps) {
     if (!cardRef.current) return
 
     const card = cardRef.current
-    const iconEl = card.querySelector('.experience-icon')
-    const timelineEl = card.querySelector('.timeline-dot')
-
-    // Ensure card is visible
+    // Ensure card is visible and only lightweight entrance
     gsap.set(card, {
       opacity: 1,
       y: 0,
-      scale: 1,
       visibility: 'visible',
     })
 
-    // Card entrance animation
-    gsap.fromTo(card, 
-      {
-        opacity: 0,
-        y: 80,
-        scale: 0.9,
-        filter: 'blur(15px)',
+    gsap.from(card, {
+      opacity: 0,
+      y: 40,
+      duration: 0.7,
+      ease: 'power2.out',
+      scrollTrigger: {
+        trigger: card,
+        start: 'top 90%',
+        toggleActions: 'play none none none',
       },
-      {
-        scrollTrigger: {
-          trigger: card,
-          start: 'top 85%',
-          toggleActions: 'play none none none',
-        },
-        opacity: 1,
-        y: 0,
-        scale: 1,
-        filter: 'blur(0px)',
-        duration: 1,
-        delay: index * 0.15,
-        ease: 'power3.out',
-      }
-    )
-
-    // Icon animation
-    if (iconEl) {
-      gsap.from(iconEl, {
-        scrollTrigger: {
-          trigger: card,
-          start: 'top 85%',
-        },
-        rotation: -180,
-        scale: 0,
-        duration: 0.8,
-        delay: index * 0.15 + 0.2,
-        ease: 'elastic.out(1, 0.6)',
-      })
-    }
-
-    // Timeline dot animation
-    if (timelineEl) {
-      gsap.from(timelineEl, {
-        scrollTrigger: {
-          trigger: card,
-          start: 'top 85%',
-        },
-        scale: 0,
-        opacity: 0,
-        duration: 0.6,
-        delay: index * 0.15 + 0.3,
-        ease: 'back.out(2)',
-      })
-    }
-
-    // Hover animations
-    const handleMouseEnter = () => {
-      setIsHovered(true)
-      gsap.to(card, {
-        scale: 1.02,
-        y: -8,
-        duration: 0.4,
-        ease: 'power2.out',
-      })
-      gsap.to(iconEl, {
-        rotation: 360,
-        scale: 1.2,
-        duration: 0.6,
-        ease: 'elastic.out(1, 0.5)',
-      })
-    }
-
-    const handleMouseLeave = () => {
-      setIsHovered(false)
-      gsap.to(card, {
-        scale: 1,
-        y: 0,
-        duration: 0.4,
-      })
-      gsap.to(iconEl, {
-        rotation: 0,
-        scale: 1,
-        duration: 0.4,
-      })
-    }
-
-    card.addEventListener('mouseenter', handleMouseEnter)
-    card.addEventListener('mouseleave', handleMouseLeave)
-
-    return () => {
-      card.removeEventListener('mouseenter', handleMouseEnter)
-      card.removeEventListener('mouseleave', handleMouseLeave)
-    }
+    })
   }, { scope: cardRef, dependencies: [index] })
 
   const techStackItems = useMemo(() => {
@@ -177,14 +92,14 @@ function ExperienceCard({ job, index, isLast }: ExperienceCardProps) {
       {/* Timeline line */}
       {!isLast && (
         <div 
-          className="absolute left-8 top-24 w-0.5 h-full bg-gradient-to-b from-brand-pink-1/30 via-brand-blue-1/30 to-transparent"
+          className="absolute left-6 sm:left-8 top-24 w-0.5 h-full bg-gradient-to-b from-brand-pink-1/30 via-brand-blue-1/30 to-transparent"
           style={{ height: 'calc(100% + 2rem)' }}
         />
       )}
 
       {/* Timeline dot */}
       <div 
-        className="timeline-dot absolute left-6 top-6 w-4 h-4 rounded-full z-10"
+        className="timeline-dot absolute left-4 sm:left-6 top-6 w-4 h-4 rounded-full z-10"
         style={{
           background: `linear-gradient(135deg, ${gradientFrom}, ${gradientTo})`,
           boxShadow: `0 0 20px ${gradientFrom}60, 0 0 40px ${gradientTo}40`,
@@ -193,17 +108,19 @@ function ExperienceCard({ job, index, isLast }: ExperienceCardProps) {
 
       <div
         ref={cardRef}
-        className="group relative ml-16 mb-8 p-8 rounded-3xl overflow-hidden opacity-100"
+        className="group relative ml-12 sm:ml-16 mb-6 sm:mb-8 p-6 sm:p-8 rounded-3xl overflow-hidden opacity-100 transition-transform duration-300"
         style={{
           background: 'rgba(255, 255, 255, 0.03)',
           backdropFilter: 'blur(20px)',
           WebkitBackdropFilter: 'blur(20px)',
           border: `1px solid ${isHovered ? `${gradientTo}40` : 'rgba(255, 255, 255, 0.1)'}`,
           boxShadow: isHovered 
-            ? `0 25px 70px ${gradientFrom}25, 0 0 50px ${gradientTo}20, inset 0 0 50px ${gradientFrom}10`
-            : '0 10px 40px rgba(0, 0, 0, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.1)',
+            ? `0 15px 40px ${gradientFrom}20, 0 0 30px ${gradientTo}15`
+            : '0 6px 24px rgba(0, 0, 0, 0.28)',
           visibility: 'visible',
         }}
+        onMouseEnter={() => setIsHovered(true)}
+        onMouseLeave={() => setIsHovered(false)}
       >
         {/* Glow effect */}
         <div 
@@ -230,18 +147,18 @@ function ExperienceCard({ job, index, isLast }: ExperienceCardProps) {
         {/* Content */}
         <div className="relative z-10 text-text-secondary">
           {/* Header */}
-          <div className="flex items-start gap-6 mb-6">
+          <div className="flex flex-col sm:flex-row items-start gap-4 sm:gap-6 mb-6">
             {/* Icon */}
             <div 
-              className="experience-icon p-5 rounded-2xl transition-all duration-500 relative overflow-hidden"
+              className="experience-icon p-4 sm:p-5 rounded-2xl transition-all duration-300 relative overflow-hidden"
               style={{
                 background: isHovered 
                   ? `linear-gradient(135deg, ${gradientFrom}30, ${gradientTo}30)`
                   : 'rgba(255, 255, 255, 0.05)',
                 border: `1px solid ${isHovered ? `${gradientTo}40` : 'rgba(255, 255, 255, 0.1)'}`,
                 boxShadow: isHovered 
-                  ? `0 10px 30px ${gradientFrom}30, inset 0 0 20px ${gradientTo}20`
-                  : '0 5px 15px rgba(0, 0, 0, 0.2)',
+                  ? `0 8px 22px ${gradientFrom}25`
+                  : '0 4px 12px rgba(0, 0, 0, 0.2)',
               }}
             >
               <div 
@@ -264,7 +181,7 @@ function ExperienceCard({ job, index, isLast }: ExperienceCardProps) {
             <div className="flex-1">
               <div className="flex items-center gap-3 mb-2">
                 <h3 
-                  className="text-2xl font-bold transition-colors duration-300"
+                  className="text-xl sm:text-2xl font-bold transition-colors duration-300"
                   style={{ 
                     color: isHovered ? gradientTo : gradientFrom,
                     textShadow: isHovered ? `0 0 20px ${gradientTo}40` : 'none',
@@ -297,8 +214,8 @@ function ExperienceCard({ job, index, isLast }: ExperienceCardProps) {
                   </a>
                 )}
               </div>
-              <p className="text-xl text-text-primary font-semibold mb-1">{job.company}</p>
-              <p className="text-text-secondary text-sm flex items-center gap-2">
+              <p className="text-lg sm:text-xl text-text-primary font-semibold mb-1">{job.company}</p>
+              <p className="text-text-secondary text-xs sm:text-sm flex items-center gap-2">
                 <FaCalendarAlt className="text-brand-pink-1" />
                 {job.duration}
               </p>
@@ -307,21 +224,21 @@ function ExperienceCard({ job, index, isLast }: ExperienceCardProps) {
 
           {/* Project */}
           <div className="mb-4">
-            <p className="text-lg font-semibold text-brand-blue-1 mb-2 flex items-center gap-2">
+            <p className="text-base sm:text-lg font-semibold text-brand-blue-1 mb-2 flex items-center gap-2">
               <FaBriefcase className="text-sm" />
               {job.project}
             </p>
-            <p className="text-text-secondary leading-relaxed">{job.description}</p>
+            <p className="text-text-secondary leading-relaxed text-sm sm:text-base">{job.description}</p>
           </div>
 
           {/* Responsibilities */}
           <div className="mb-6">
-            <h4 className="text-sm font-semibold text-text-primary mb-3 uppercase tracking-wide">Trách nhiệm chính:</h4>
+            <h4 className="text-xs sm:text-sm font-semibold text-text-primary mb-3 uppercase tracking-wide">Trách nhiệm chính:</h4>
             <ul className="space-y-2">
               {job.responsibilities.map((responsibility, idx) => (
                 <li 
                   key={idx}
-                  className="text-text-secondary text-sm flex items-start gap-3 pl-4 relative"
+                  className="text-text-secondary text-sm sm:text-base flex items-start gap-3 pl-4 relative"
                   style={{
                     borderLeft: `2px solid ${gradientFrom}30`,
                   }}
@@ -341,41 +258,16 @@ function ExperienceCard({ job, index, isLast }: ExperienceCardProps) {
 
           {/* Tech Stack */}
           <div>
-            <h4 className="text-sm font-semibold text-text-primary mb-3 uppercase tracking-wide">Công nghệ sử dụng:</h4>
+            <h4 className="text-xs sm:text-sm font-semibold text-text-primary mb-3 uppercase tracking-wide">Công nghệ sử dụng:</h4>
             <div className="flex flex-wrap gap-2">
               {techStackItems.map((tech, techIdx) => (
                 <span
                   key={techIdx}
-                  className="px-4 py-2 rounded-lg text-xs font-medium transition-all duration-300 cursor-pointer group/tech relative overflow-hidden"
+                  className="px-3 sm:px-4 py-2 rounded-lg text-xs sm:text-sm font-medium transition-all duration-200 cursor-pointer group/tech relative overflow-hidden"
                   style={{
                     background: `linear-gradient(135deg, ${gradientFrom}15, ${gradientTo}15)`,
                     border: `1px solid ${gradientFrom}30`,
                     color: 'rgba(255, 255, 255, 0.9)',
-                  }}
-                  onMouseEnter={(e) => {
-                    gsap.to(e.currentTarget, {
-                      scale: 1.1,
-                      y: -3,
-                      duration: 0.2,
-                      ease: 'back.out(2)',
-                    })
-                    gsap.to(e.currentTarget, {
-                      boxShadow: `0 8px 25px ${gradientFrom}40, 0 0 15px ${gradientTo}30`,
-                      borderColor: gradientTo,
-                      duration: 0.2,
-                    })
-                  }}
-                  onMouseLeave={(e) => {
-                    gsap.to(e.currentTarget, {
-                      scale: 1,
-                      y: 0,
-                      duration: 0.2,
-                    })
-                    gsap.to(e.currentTarget, {
-                      boxShadow: 'none',
-                      borderColor: `${gradientFrom}30`,
-                      duration: 0.2,
-                    })
                   }}
                 >
                   <span className="relative z-10 text-text-secondary">{tech}</span>
@@ -444,7 +336,7 @@ export default function ExperienceList() {
   }, { scope: sectionRef })
 
   return (
-    <div ref={sectionRef} className="space-y-0 opacity-100" style={{ visibility: 'visible' }}>
+    <div ref={sectionRef} className="space-y-4 sm:space-y-6 opacity-100" style={{ visibility: 'visible' }}>
       {jobs.map((job, index) => (
         <ExperienceCard
           key={job.id}

@@ -2,7 +2,7 @@
 
 import { useGSAP } from '@gsap/react'
 import gsap from 'gsap'
-import { useRef, useEffect } from 'react'
+import { useRef } from 'react'
 import { useTranslations } from 'next-intl'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import Image from 'next/image'
@@ -51,34 +51,6 @@ export default function ContactInfo() {
     }>
   }
 
-  // Debug: Log socials to check if they're loaded
-  useEffect(() => {
-    console.log('Socials data from t.raw:', socialsData)
-    console.log('Profile socials:', profile.socials)
-    console.log('Socials length:', profile.socials?.length)
-    console.log('Is array:', Array.isArray(socialsData))
-  }, [socialsData, profile.socials])
-
-  // Add CSS animation for rotating ring
-  useEffect(() => {
-    if (typeof document !== 'undefined') {
-      const styleId = 'avatar-ring-animation'
-      if (!document.getElementById(styleId)) {
-        const style = document.createElement('style')
-        style.id = styleId
-        style.textContent = `
-          @keyframes avatarRingSpin {
-            from { transform: rotate(0deg); }
-            to { transform: rotate(360deg); }
-          }
-          .avatar-ring {
-            animation: avatarRingSpin 3s linear infinite;
-          }
-        `
-        document.head.appendChild(style)
-      }
-    }
-  }, [])
 
 
   useGSAP(() => {
@@ -91,7 +63,7 @@ export default function ContactInfo() {
       visibility: 'visible',
     })
 
-    // Avatar animation
+    // Avatar animation - simplified
     if (avatarRef.current) {
       gsap.from(avatarRef.current, {
         scrollTrigger: {
@@ -99,11 +71,10 @@ export default function ContactInfo() {
           start: 'top 80%',
           toggleActions: 'play none none none',
         },
-        scale: 0,
-        rotation: -180,
         opacity: 0,
-        duration: 1,
-        ease: 'back.out(1.7)',
+        y: 20,
+        duration: 0.6,
+        ease: 'power2.out',
       })
     }
 
@@ -124,12 +95,10 @@ export default function ContactInfo() {
         toggleActions: 'play none none none',
       },
       opacity: 0,
-      y: 50,
-      scale: 0.9,
-      duration: 0.8,
-      stagger: 0.1,
-      delay: 0.3,
-      ease: 'power3.out',
+      y: 20,
+      duration: 0.5,
+      stagger: 0.05,
+      ease: 'power2.out',
       immediateRender: false,
     })
 
@@ -150,13 +119,11 @@ export default function ContactInfo() {
           start: 'top 80%',
           toggleActions: 'play none none none',
         },
-        scale: 0,
-        rotation: -180,
         opacity: 0,
-        duration: 0.6,
-        stagger: 0.1,
-        delay: 0.6,
-        ease: 'elastic.out(1, 0.6)',
+        scale: 0.8,
+        duration: 0.4,
+        stagger: 0.05,
+        ease: 'power2.out',
         immediateRender: false,
       })
     }
@@ -165,19 +132,16 @@ export default function ContactInfo() {
   return (
     <div ref={infoRef} className="space-y-6 opacity-100" style={{ visibility: 'visible' }}>
       {/* Avatar Card */}
-      <div className="group relative p-8 rounded-3xl overflow-hidden"
-        style={{
-          background: 'rgba(255, 255, 255, 0.03)',
-          backdropFilter: 'blur(20px)',
-          WebkitBackdropFilter: 'blur(20px)',
-          border: '1px solid rgba(255, 255, 255, 0.1)',
-          boxShadow: '0 10px 40px rgba(0, 0, 0, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.1)',
-        }}
+      <div 
+        className="group relative p-8 rounded-3xl overflow-hidden backdrop-blur-xl
+        bg-white/60 border border-border-default shadow-xl
+        dark:bg-white/5 dark:border-white/10 dark:shadow-[0_10px_40px_rgba(0,0,0,0.3)]
+        transition-colors duration-300"
       >
-        {/* Glow effect */}
-        <div className="absolute -inset-4 opacity-0 group-hover:opacity-60 transition-opacity duration-500 pointer-events-none"
+        {/* Glow effect - reduced */}
+        <div className="absolute -inset-4 opacity-0 group-hover:opacity-20 transition-opacity duration-300 pointer-events-none"
           style={{
-            background: 'radial-gradient(circle, #FF5FA240, #3B82F620, transparent 70%)',
+            background: 'radial-gradient(circle, rgba(233, 30, 99, 0.2), rgba(25, 118, 210, 0.1), transparent 70%)',
             filter: 'blur(40px)',
           }}
         />
@@ -187,66 +151,36 @@ export default function ContactInfo() {
             ref={avatarRef}
             className="relative w-48 h-48 mx-auto mb-6 rounded-full overflow-hidden border-4 group/avatar"
             style={{
-              borderColor: 'rgba(255, 95, 162, 0.4)',
-              boxShadow: '0 0 40px rgba(255, 95, 162, 0.5), 0 0 80px rgba(59, 130, 246, 0.4), inset 0 0 40px rgba(255, 95, 162, 0.2)',
+              borderColor: 'rgba(233, 30, 99, 0.5)',
+              boxShadow: '0 0 20px rgba(233, 30, 99, 0.3), 0 0 40px rgba(25, 118, 210, 0.2)',
             }}
           >
             <Image
               src="/image/anh_the.jpg"
               alt={profile.name}
               fill
-              className="object-cover group-hover/avatar:scale-110 transition-transform duration-500"
+              className="object-cover group-hover/avatar:scale-105 transition-transform duration-300"
               priority
             />
-            {/* Avatar glow */}
-            <div className="absolute inset-0 bg-gradient-to-br from-brand-pink-1/30 to-brand-blue-1/30 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-            
-            {/* Rotating ring */}
-            <div 
-              className="absolute inset-0 rounded-full opacity-0 group-hover:opacity-40 transition-opacity duration-500"
-              style={{
-                background: 'conic-gradient(from 0deg, #FF5FA2, #3B82F6, #FF5FA2)',
-                padding: '4px',
-                WebkitMask: 'linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0)',
-                WebkitMaskComposite: 'xor',
-                maskComposite: 'exclude',
-                animation: 'spin 3s linear infinite',
-              }}
-            />
+            {/* Avatar glow - reduced */}
+            <div className="absolute inset-0 bg-gradient-to-br from-brand-pink-1/20 to-brand-blue-1/20 opacity-0 group-hover:opacity-50 transition-opacity duration-300" />
           </div>
           
-          <h2 className="text-3xl font-bold text-brand-pink-1 mb-2 group-hover:text-brand-blue-1 transition-colors duration-300">
+          <h2 className="text-3xl font-bold text-brand-pink-1 mb-2 transition-colors duration-200">
             {profile.name}
           </h2>
-          <p className="text-text-secondary text-lg">{profile.role}</p>
+          <p className="text-text-secondary text-lg font-medium">{profile.role}</p>
         </div>
       </div>
 
       {/* Contact Details */}
       <div className="space-y-4">
         {/* Phone */}
-        <div className="info-card group relative p-6 rounded-2xl overflow-hidden cursor-pointer"
-          style={{
-            background: 'rgba(255, 255, 255, 0.03)',
-            backdropFilter: 'blur(20px)',
-            WebkitBackdropFilter: 'blur(20px)',
-            border: '1px solid rgba(255, 255, 255, 0.1)',
-          }}
-          onMouseEnter={(e) => {
-            gsap.to(e.currentTarget, {
-              scale: 1.02,
-              y: -5,
-              duration: 0.3,
-              ease: 'power2.out',
-            })
-          }}
-          onMouseLeave={(e) => {
-            gsap.to(e.currentTarget, {
-              scale: 1,
-              y: 0,
-              duration: 0.3,
-            })
-          }}
+        <div 
+          className="info-card group relative p-6 rounded-2xl overflow-hidden cursor-pointer backdrop-blur-xl
+          bg-white/60 border border-border-default shadow-sm
+          dark:bg-white/5 dark:border-white/10 dark:shadow-none
+          transition-all duration-200 hover:shadow-md"
         >
           <a href={`tel:${profile.phone}`} className="flex items-center gap-4">
             <div className="p-3 rounded-xl bg-gradient-to-br from-brand-pink-1/20 to-brand-blue-1/20 border border-brand-pink-1/30">
@@ -260,28 +194,11 @@ export default function ContactInfo() {
         </div>
 
         {/* Email */}
-        <div className="info-card group relative p-6 rounded-2xl overflow-hidden cursor-pointer"
-          style={{
-            background: 'rgba(255, 255, 255, 0.03)',
-            backdropFilter: 'blur(20px)',
-            WebkitBackdropFilter: 'blur(20px)',
-            border: '1px solid rgba(255, 255, 255, 0.1)',
-          }}
-          onMouseEnter={(e) => {
-            gsap.to(e.currentTarget, {
-              scale: 1.02,
-              y: -5,
-              duration: 0.3,
-              ease: 'power2.out',
-            })
-          }}
-          onMouseLeave={(e) => {
-            gsap.to(e.currentTarget, {
-              scale: 1,
-              y: 0,
-              duration: 0.3,
-            })
-          }}
+        <div 
+          className="info-card group relative p-6 rounded-2xl overflow-hidden cursor-pointer backdrop-blur-xl
+          bg-white/60 border border-border-default shadow-sm
+          dark:bg-white/5 dark:border-white/10 dark:shadow-none
+          transition-all duration-200 hover:shadow-md"
         >
           <a href={`mailto:${profile.email}`} className="flex items-center gap-4">
             <div className="p-3 rounded-xl bg-gradient-to-br from-brand-blue-1/20 to-brand-pink-1/20 border border-brand-blue-1/30">
@@ -295,13 +212,10 @@ export default function ContactInfo() {
         </div>
 
         {/* Address */}
-        <div className="info-card group relative p-6 rounded-2xl overflow-hidden"
-          style={{
-            background: 'rgba(255, 255, 255, 0.03)',
-            backdropFilter: 'blur(20px)',
-            WebkitBackdropFilter: 'blur(20px)',
-            border: '1px solid rgba(255, 255, 255, 0.1)',
-          }}
+        <div 
+          className="info-card group relative p-6 rounded-2xl overflow-hidden backdrop-blur-xl
+          bg-white/60 border border-border-default shadow-sm
+          dark:bg-white/5 dark:border-white/10 dark:shadow-none"
         >
           <div className="flex items-center gap-4">
             <div className="p-3 rounded-xl bg-gradient-to-br from-brand-pink-1/20 to-brand-blue-1/20 border border-brand-pink-1/30">
@@ -315,28 +229,11 @@ export default function ContactInfo() {
         </div>
 
         {/* Website */}
-        <div className="info-card group relative p-6 rounded-2xl overflow-hidden cursor-pointer"
-          style={{
-            background: 'rgba(255, 255, 255, 0.03)',
-            backdropFilter: 'blur(20px)',
-            WebkitBackdropFilter: 'blur(20px)',
-            border: '1px solid rgba(255, 255, 255, 0.1)',
-          }}
-          onMouseEnter={(e) => {
-            gsap.to(e.currentTarget, {
-              scale: 1.02,
-              y: -5,
-              duration: 0.3,
-              ease: 'power2.out',
-            })
-          }}
-          onMouseLeave={(e) => {
-            gsap.to(e.currentTarget, {
-              scale: 1,
-              y: 0,
-              duration: 0.3,
-            })
-          }}
+        <div 
+          className="info-card group relative p-6 rounded-2xl overflow-hidden cursor-pointer backdrop-blur-xl
+          bg-white/60 border border-border-default shadow-sm
+          dark:bg-white/5 dark:border-white/10 dark:shadow-none
+          transition-all duration-200 hover:shadow-md"
         >
           <a href={profile.website} target="_blank" rel="noopener noreferrer" className="flex items-center gap-4">
             <div className="p-3 rounded-xl bg-gradient-to-br from-brand-blue-1/20 to-brand-pink-1/20 border border-brand-blue-1/30">
@@ -344,27 +241,23 @@ export default function ContactInfo() {
             </div>
             <div>
               <p className="text-sm text-text-secondary mb-1">{tContact('website_label')}</p>
-              <p className="text-text-primary font-semibold">{profile.website}</p>
+              <p className="text-text-primary font-semibold truncate max-w-[200px] md:max-w-xs">{profile.website}</p>
             </div>
           </a>
         </div>
       </div>
 
       {/* Social Links */}
-      <div className="group relative p-6 rounded-2xl overflow-hidden opacity-100 info-card"
-        style={{
-          background: 'rgba(255, 255, 255, 0.03)',
-          backdropFilter: 'blur(20px)',
-          WebkitBackdropFilter: 'blur(20px)',
-          border: '1px solid rgba(255, 255, 255, 0.1)',
-          boxShadow: '0 10px 40px rgba(0, 0, 0, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.1)',
-          visibility: 'visible',
-        }}
+      <div 
+        className="group relative p-6 rounded-2xl overflow-hidden opacity-100 info-card backdrop-blur-xl
+        bg-white/60 border border-border-default shadow-sm
+        dark:bg-white/5 dark:border-white/10 dark:shadow-[0_10px_40px_rgba(0,0,0,0.3)]"
+        style={{ visibility: 'visible' }}
       >
-        {/* Glow effect */}
-        <div className="absolute -inset-4 opacity-0 group-hover:opacity-50 transition-opacity duration-500 pointer-events-none"
+        {/* Glow effect - reduced */}
+        <div className="absolute -inset-4 opacity-0 group-hover:opacity-20 transition-opacity duration-300 pointer-events-none"
           style={{
-            background: 'radial-gradient(circle, #FF5FA240, #3B82F620, transparent 70%)',
+            background: 'radial-gradient(circle, rgba(233, 30, 99, 0.2), rgba(25, 118, 210, 0.1), transparent 70%)',
             filter: 'blur(40px)',
           }}
         />
@@ -380,9 +273,9 @@ export default function ContactInfo() {
               }
 
               const colors = [
-                { from: '#FF5FA2', to: '#3B82F6' },
-                { from: '#3B82F6', to: '#FF5FA2' },
-                { from: '#FF5FA2', to: '#3B82F6' },
+                { from: '#E91E63', to: '#1976D2' },
+                { from: '#1976D2', to: '#E91E63' },
+                { from: '#E91E63', to: '#1976D2' },
               ]
               const color = colors[index % colors.length]
 
@@ -392,62 +285,44 @@ export default function ContactInfo() {
                   href={social.url}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="social-icon group/social relative p-4 rounded-xl overflow-hidden transition-all duration-300 opacity-100"
+                  className="social-icon group/social relative p-4 rounded-xl overflow-hidden transition-all duration-300 opacity-100 border-2 dark:border"
                   style={{
                     background: `linear-gradient(135deg, ${color.from}20, ${color.to}20)`,
-                    border: `1px solid ${color.from}40`,
+                    borderColor: `${color.from}`,
                     boxShadow: `0 5px 15px ${color.from}20`,
                     visibility: 'visible',
                   }}
                   onMouseEnter={(e) => {
+                    const isDark = document.documentElement.classList.contains('dark')
                     gsap.to(e.currentTarget, {
-                      scale: 1.2,
-                      rotation: 360,
-                      y: -5,
-                      duration: 0.5,
-                      ease: 'elastic.out(1, 0.5)',
+                      scale: 1.05,
+                      duration: 0.2,
+                      ease: 'power2.out',
                     })
                     gsap.to(e.currentTarget, {
-                      boxShadow: `0 10px 30px ${color.from}50, 0 0 20px ${color.to}40`,
+                      boxShadow: `0 8px 20px ${color.from}30`,
                       borderColor: color.to,
-                      duration: 0.3,
+                      borderWidth: isDark ? '1px' : '2px',
+                      duration: 0.2,
                     })
                   }}
                   onMouseLeave={(e) => {
+                    const isDark = document.documentElement.classList.contains('dark')
                     gsap.to(e.currentTarget, {
                       scale: 1,
-                      rotation: 0,
-                      y: 0,
-                      duration: 0.3,
+                      duration: 0.2,
                     })
                     gsap.to(e.currentTarget, {
                       boxShadow: `0 5px 15px ${color.from}20`,
-                      borderColor: `${color.from}40`,
-                      duration: 0.3,
+                      borderColor: color.from,
+                      borderWidth: isDark ? '1px' : '2px',
+                      duration: 0.2,
                     })
                   }}
                 >
-                  {/* Icon glow */}
-                  <div 
-                    className="absolute inset-0 opacity-0 group-hover/social:opacity-100 transition-opacity duration-300"
-                    style={{
-                      background: `radial-gradient(circle, ${color.to}40, transparent 70%)`,
-                      filter: 'blur(15px)',
-                    }}
-                  />
-                  
-                  <div className="text-3xl relative z-10 transition-colors duration-300" style={{ color: color.from }}>
+                  <div className="text-3xl relative z-10 transition-colors duration-200" style={{ color: color.from }}>
                     <IconComponent />
                   </div>
-                  
-                  {/* Shine effect */}
-                  <div 
-                    className="absolute inset-0 -translate-x-full group-hover/social:translate-x-full transition-transform duration-700"
-                    style={{
-                      background: `linear-gradient(90deg, transparent, ${color.to}50, transparent)`,
-                      filter: 'blur(8px)',
-                    }}
-                  />
                 </a>
               )
             })
@@ -459,4 +334,3 @@ export default function ContactInfo() {
     </div>
   )
 }
-

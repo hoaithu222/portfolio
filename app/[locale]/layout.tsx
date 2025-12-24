@@ -7,6 +7,9 @@ import '../globals.css'
 import { Metadata } from 'next';
 import Header from '@/components/header'
 import Footer from '@/components/footer'
+import ScrollToTop from '@/components/common/ScrollToTop'
+import PointerTrail from '@/components/common/PointerTrail'
+import SmoothScroll from '@/components/common/SmoothScroll'
 
 
 const geistSans = Geist({
@@ -175,6 +178,9 @@ export default async function LocaleLayout({
             <NextIntlClientProvider locale={locale} messages={messages}>
               {/* Header */}
               <Header />
+              <ScrollToTop />
+              <SmoothScroll />
+              <PointerTrail />
               <main className="min-h-screen">
                 {children}
               </main>

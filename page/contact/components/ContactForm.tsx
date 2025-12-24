@@ -34,7 +34,7 @@ export default function ContactForm() {
       visibility: 'visible',
     })
 
-    // Form entrance animation
+    // Form entrance animation - simplified
     gsap.from(formRef.current, {
       scrollTrigger: {
         trigger: formRef.current,
@@ -42,25 +42,8 @@ export default function ContactForm() {
         toggleActions: 'play none none none',
       },
       opacity: 0,
-      y: 50,
-      scale: 0.95,
-      duration: 1,
-      ease: 'power3.out',
-    })
-
-    // Input fields animation
-    const inputs = formRef.current.querySelectorAll('input, textarea')
-    gsap.from(inputs, {
-      scrollTrigger: {
-        trigger: formRef.current,
-        start: 'top 80%',
-        toggleActions: 'play none none none',
-      },
-      opacity: 0,
-      x: -30,
-      duration: 0.6,
-      stagger: 0.1,
-      delay: 0.3,
+      y: 20,
+      duration: 0.5,
       ease: 'power2.out',
     })
   }, { scope: formRef })
@@ -102,11 +85,11 @@ export default function ContactForm() {
       // Show success message
       setSubmitStatus('success')
       
-      // Success animation
+      // Success animation - simplified
       if (formRef.current) {
         gsap.to(formRef.current, {
-          scale: 1.02,
-          duration: 0.3,
+          scale: 1.01,
+          duration: 0.2,
           yoyo: true,
           repeat: 1,
           ease: 'power2.inOut',
@@ -129,149 +112,172 @@ export default function ContactForm() {
     <form
       ref={formRef}
       onSubmit={handleSubmit}
-      className="group relative p-8 rounded-3xl overflow-hidden opacity-100"
+      className="group relative w-full p-6 sm:p-8 rounded-3xl overflow-hidden opacity-100 backdrop-blur-xl
+        bg-white/60 border-2 border-border-default shadow-xl
+        dark:bg-white/5 dark:border-white/10 dark:shadow-[0_10px_40px_rgba(0,0,0,0.3)]
+        transition-colors duration-300"
       style={{
-        background: 'rgba(255, 255, 255, 0.03)',
-        backdropFilter: 'blur(20px)',
-        WebkitBackdropFilter: 'blur(20px)',
-        border: '1px solid rgba(255, 255, 255, 0.1)',
-        boxShadow: '0 10px 40px rgba(0, 0, 0, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.1)',
         visibility: 'visible',
       }}
     >
-      {/* Glow effect */}
-      <div className="absolute -inset-4 opacity-0 group-hover:opacity-50 transition-opacity duration-500 pointer-events-none"
+      {/* Glow effect - reduced */}
+      <div className="absolute -inset-4 opacity-0 group-hover:opacity-20 transition-opacity duration-300 pointer-events-none"
         style={{
-          background: 'radial-gradient(circle, #FF5FA240, #3B82F620, transparent 70%)',
+          background: 'radial-gradient(circle, rgba(233, 30, 99, 0.2), rgba(25, 118, 210, 0.1), transparent 70%)',
           filter: 'blur(40px)',
         }}
       />
 
-      <div className="relative z-10 text-text-secondary">
-        <h3 className="text-2xl font-bold text-brand-pink-1 mb-6 group-hover:text-brand-blue-1 transition-colors duration-300">
+      <div className="relative z-10 w-full">
+        <h3 className="text-2xl font-bold text-brand-pink-1 mb-6 transition-colors duration-200">
           {t('title')}
         </h3>
 
-        {/* Name */}
-        <div className="mb-6">
-          <label htmlFor="name" className="block text-sm font-medium text-text-secondary mb-2">
-            {t('name_label')}
-          </label>
-          <input
-            type="text"
-            id="name"
-            name="name"
-            value={formData.name}
-            onChange={handleChange}
-            required
-            className="w-full px-4 py-3 rounded-xl bg-bg-secondary/50 border border-border-default text-text-primary placeholder-text-secondary focus:outline-none focus:border-brand-pink-1 focus:ring-2 focus:ring-brand-pink-1/20 transition-all duration-300"
-            placeholder={t('name_placeholder')}
-          />
-        </div>
+        <div className="space-y-5">
+          {/* Name */}
+          <div>
+            <label htmlFor="name" className="block text-sm font-medium text-text-secondary mb-2">
+              {t('name_label')}
+            </label>
+            <input
+              type="text"
+              id="name"
+              name="name"
+              value={formData.name}
+              onChange={handleChange}
+              required
+              className="w-full px-4 py-3 rounded-xl 
+                bg-white text-text-primary 
+                dark:bg-bg-secondary/50
+                placeholder-text-secondary focus:outline-none focus:ring-2 focus:ring-brand-pink-1/20 transition-all duration-300"
+              style={{
+                border: '2px solid var(--border-default)',
+              }}
+              onFocus={(e) => {
+                e.currentTarget.style.borderColor = 'var(--brand-pink-1)'
+              }}
+              onBlur={(e) => {
+                e.currentTarget.style.borderColor = 'var(--border-default)'
+              }}
+              placeholder={t('name_placeholder')}
+            />
+          </div>
 
-        {/* Email */}
-        <div className="mb-6">
-          <label htmlFor="email" className="block text-sm font-medium text-text-secondary mb-2">
-            {t('email_label')}
-          </label>
-          <input
-            type="email"
-            id="email"
-            name="email"
-            value={formData.email}
-            onChange={handleChange}
-            required
-            className="w-full px-4 py-3 rounded-xl bg-bg-secondary/50 border border-border-default text-text-primary placeholder-text-secondary focus:outline-none focus:border-brand-blue-1 focus:ring-2 focus:ring-brand-blue-1/20 transition-all duration-300"
-            placeholder={t('email_placeholder')}
-          />
-        </div>
+          {/* Email */}
+          <div>
+            <label htmlFor="email" className="block text-sm font-medium text-text-secondary mb-2">
+              {t('email_label')}
+            </label>
+            <input
+              type="email"
+              id="email"
+              name="email"
+              value={formData.email}
+              onChange={handleChange}
+              required
+              className="w-full px-4 py-3 rounded-xl 
+                bg-white text-text-primary 
+                dark:bg-bg-secondary/50
+                placeholder-text-secondary focus:outline-none focus:ring-2 focus:ring-brand-blue-1/20 transition-all duration-300"
+              style={{
+                border: '2px solid var(--border-default)',
+              }}
+              onFocus={(e) => {
+                e.currentTarget.style.borderColor = 'var(--brand-blue-1)'
+              }}
+              onBlur={(e) => {
+                e.currentTarget.style.borderColor = 'var(--border-default)'
+              }}
+              placeholder={t('email_placeholder')}
+            />
+          </div>
 
-        {/* Subject */}
-        <div className="mb-6">
-          <label htmlFor="subject" className="block text-sm font-medium text-text-secondary mb-2">
-            {t('subject_label')}
-          </label>
-          <input
-            type="text"
-            id="subject"
-            name="subject"
-            value={formData.subject}
-            onChange={handleChange}
-            required
-            className="w-full px-4 py-3 rounded-xl bg-bg-secondary/50 border border-border-default text-text-primary placeholder-text-secondary focus:outline-none focus:border-brand-pink-1 focus:ring-2 focus:ring-brand-pink-1/20 transition-all duration-300"
-            placeholder={t('subject_placeholder')}
-          />
-        </div>
+          {/* Subject */}
+          <div>
+            <label htmlFor="subject" className="block text-sm font-medium text-text-secondary mb-2">
+              {t('subject_label')}
+            </label>
+            <input
+              type="text"
+              id="subject"
+              name="subject"
+              value={formData.subject}
+              onChange={handleChange}
+              required
+              className="w-full px-4 py-3 rounded-xl 
+                bg-white text-text-primary 
+                dark:bg-bg-secondary/50
+                placeholder-text-secondary focus:outline-none focus:ring-2 focus:ring-brand-pink-1/20 transition-all duration-300"
+              style={{
+                border: '2px solid var(--border-default)',
+              }}
+              onFocus={(e) => {
+                e.currentTarget.style.borderColor = 'var(--brand-pink-1)'
+              }}
+              onBlur={(e) => {
+                e.currentTarget.style.borderColor = 'var(--border-default)'
+              }}
+              placeholder={t('subject_placeholder')}
+            />
+          </div>
 
-        {/* Message */}
-        <div className="mb-6">
-          <label htmlFor="message" className="block text-sm font-medium text-text-secondary mb-2">
-            {t('message_label')}
-          </label>
-          <textarea
-            id="message"
-            name="message"
-            value={formData.message}
-            onChange={handleChange}
-            required
-            rows={6}
-            className="w-full px-4 py-3 rounded-xl bg-bg-secondary/50 border border-border-default text-text-primary placeholder-text-secondary focus:outline-none focus:border-brand-blue-1 focus:ring-2 focus:ring-brand-blue-1/20 transition-all duration-300 resize-none"
-            placeholder={t('message_placeholder')}
-          />
+          {/* Message */}
+          <div>
+            <label htmlFor="message" className="block text-sm font-medium text-text-secondary mb-2">
+              {t('message_label')}
+            </label>
+            <textarea
+              id="message"
+              name="message"
+              value={formData.message}
+              onChange={handleChange}
+              required
+              rows={6}
+              className="w-full px-4 py-3 rounded-xl 
+                bg-white text-text-primary 
+                dark:bg-bg-secondary/50
+                placeholder-text-secondary focus:outline-none focus:ring-2 focus:ring-brand-blue-1/20 transition-all duration-300 resize-none"
+              style={{
+                border: '2px solid var(--border-default)',
+              }}
+              onFocus={(e) => {
+                e.currentTarget.style.borderColor = 'var(--brand-blue-1)'
+              }}
+              onBlur={(e) => {
+                e.currentTarget.style.borderColor = 'var(--border-default)'
+              }}
+              placeholder={t('message_placeholder')}
+            />
+          </div>
         </div>
 
         {/* Submit Button */}
         <button
           type="submit"
-          className="w-full px-6 py-4 rounded-xl bg-gradient-to-r from-brand-pink-1 to-brand-blue-1 text-white font-semibold flex items-center justify-center gap-3 hover:from-brand-blue-1 hover:to-brand-pink-1 transition-all duration-300 group/btn relative overflow-hidden"
-          onMouseEnter={(e) => {
-            gsap.to(e.currentTarget, {
-              scale: 1.05,
-              duration: 0.3,
-              ease: 'power2.out',
-            })
-          }}
-          onMouseLeave={(e) => {
-            gsap.to(e.currentTarget, {
-              scale: 1,
-              duration: 0.3,
-            })
-          }}
+          className="w-full mt-6 px-6 py-4 rounded-xl bg-gradient-to-r from-brand-pink-1 to-brand-blue-1 text-white font-semibold flex items-center justify-center gap-3 hover:from-brand-blue-1 hover:to-brand-pink-1 transition-all duration-200 group/btn relative overflow-hidden shadow-lg hover:shadow-xl"
         >
           <span className="relative z-10 flex items-center gap-3">
-            <FaPaperPlane className="text-lg group-hover/btn:translate-x-1 group-hover/btn:-translate-y-1 transition-transform duration-300" />
+            <FaPaperPlane className="text-lg" />
             {t('submit')}
           </span>
-          
-          {/* Shine effect */}
-          <div 
-            className="absolute inset-0 -translate-x-full group-hover/btn:translate-x-full transition-transform duration-700"
-            style={{
-              background: 'linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent)',
-            }}
-          />
         </button>
 
         {/* Status Message */}
         {submitStatus === 'success' && (
-          <div className="mt-4 p-4 rounded-xl bg-green-500/20 border border-green-500/30 flex items-center gap-3 text-green-400">
+          <div className="mt-4 p-4 rounded-xl bg-green-500/20 border border-green-500/30 flex items-center gap-3 text-green-600 dark:text-green-400">
             <FaCheckCircle className="text-xl" />
             <p>{t('success')}</p>
           </div>
         )}
 
         {submitStatus === 'error' && (
-          <div className="mt-4 p-4 rounded-xl bg-red-500/20 border border-red-500/30 flex items-center gap-3 text-red-400">
+          <div className="mt-4 p-4 rounded-xl bg-red-500/20 border border-red-500/30 flex items-center gap-3 text-red-600 dark:text-red-400">
             <FaExclamationCircle className="text-xl" />
             <p>{t('error')}</p>
           </div>
         )}
       </div>
 
-      {/* Decorative corner */}
-      <div className="absolute top-0 right-0 w-32 h-32 opacity-30 group-hover:opacity-60 transition-opacity duration-300 bg-gradient-to-br from-brand-pink-1 to-transparent" style={{ filter: 'blur(20px)' }} />
     </form>
   )
 }
-
-

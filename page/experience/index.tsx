@@ -21,16 +21,16 @@ function FloatingElements({ floatingElementsRef }: { floatingElementsRef: React.
       return seed / 233280
     }
 
-    return Array.from({ length: 40 }).map((_, i) => ({
+    // Fewer elements for lighter render on low-end devices
+    return Array.from({ length: 16 }).map((_, i) => ({
       id: i,
       left: getRandom() * 100,
       top: getRandom() * 100,
       width: getRandom() * 2 + 1,
       height: getRandom() * 2 + 1,
-      opacity: getRandom() * 0.5 + 0.3,
-      blur: getRandom() * 12 + 6,
+      opacity: getRandom() * 0.4 + 0.25,
+      blur: getRandom() * 10 + 4,
       color: i % 3 === 0 ? '#FF5FA2' : i % 3 === 1 ? '#3B82F6' : '#FFB3D5',
-      delay: getRandom() * 2,
     }))
   }, [])
 
@@ -49,7 +49,7 @@ function FloatingElements({ floatingElementsRef }: { floatingElementsRef: React.
             borderRadius: '50%',
             opacity: el.opacity,
             boxShadow: `0 0 ${el.blur}px ${el.color}, 0 0 ${el.blur * 2}px ${el.color}40`,
-            filter: `blur(${el.width * 0.4}px)`,
+            filter: `blur(${el.width * 0.35}px)`,
           }}
         />
       ))}
@@ -140,49 +140,12 @@ export default function ExperiencePage() {
         ease: 'power3.out',
       })
     }
-
-    // Floating elements animation
-    if (floatingElementsRef.current) {
-      const elements = floatingElementsRef.current.querySelectorAll('.floating-element')
-      elements.forEach((el) => {
-        const delay = parseFloat(el.getAttribute('data-delay') || '0')
-        
-        gsap.to(el, {
-          y: 'random(-35, 35)',
-          x: 'random(-25, 25)',
-          rotation: 'random(-18, 18)',
-          scale: 'random(0.85, 1.15)',
-          opacity: 'random(0.3, 0.7)',
-          duration: 'random(5, 8)',
-          repeat: -1,
-          yoyo: true,
-          ease: 'sine.inOut',
-          delay: delay,
-        })
-      })
-    }
-
-    // Gradient orbs animation
-    const gradientOrbs = sectionRef.current.querySelectorAll('.gradient-orb')
-    gradientOrbs.forEach((orb, index) => {
-      gsap.to(orb, {
-        scale: 'random(1.3, 1.9)',
-        x: 'random(-120, 120)',
-        y: 'random(-120, 120)',
-        opacity: 'random(0.12, 0.25)',
-        duration: 'random(12, 18)',
-        repeat: -1,
-        yoyo: true,
-        ease: 'sine.inOut',
-        delay: index * 3,
-      })
-    })
   }, { scope: sectionRef })
 
   return (
     <section 
       ref={sectionRef}
-      className="relative min-h-screen py-24 bg-gradient-to-br from-bg-primary via-bg-secondary to-bg-primary overflow-hidden"
+      className="relative min-h-screen py-16 sm:py-20 lg:py-24 bg-gradient-to-br from-bg-primary via-bg-secondary to-bg-primary overflow-hidden"
       style={{
         background: 'radial-gradient(ellipse at top, rgba(255, 95, 162, 0.08) 0%, transparent 50%), radial-gradient(ellipse at bottom, rgba(59, 130, 246, 0.08) 0%, transparent 50%)',
       }}
@@ -203,10 +166,10 @@ export default function ExperiencePage() {
 
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         {/* Title Section */}
-        <div className="text-center mb-20">
+        <div className="text-center mb-12 sm:mb-16 lg:mb-20">
           <h1 
             ref={titleRef}
-            className="text-6xl md:text-7xl lg:text-8xl font-black mb-6 bg-gradient-to-r from-brand-pink-1 via-brand-blue-1 via-brand-pink-1 to-brand-blue-1 bg-clip-text text-transparent bg-[length:200%_auto] opacity-100"
+            className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-black mb-4 sm:mb-6 bg-gradient-to-r from-brand-pink-1 via-brand-blue-1 via-brand-pink-1 to-brand-blue-1 bg-clip-text text-transparent bg-[length:200%_auto] opacity-100"
             style={{
               textShadow: '0 0 40px rgba(255, 95, 162, 0.3), 0 0 80px rgba(59, 130, 246, 0.2)',
               visibility: 'visible',
@@ -216,7 +179,7 @@ export default function ExperiencePage() {
           </h1>
           <p 
             ref={subtitleRef}
-            className="text-xl md:text-2xl lg:text-3xl text-text-secondary max-w-4xl mx-auto leading-relaxed font-light opacity-100"
+            className="text-base sm:text-lg md:text-xl lg:text-2xl text-text-secondary max-w-4xl mx-auto leading-relaxed font-light opacity-100"
             style={{
               textShadow: '0 2px 20px rgba(0, 0, 0, 0.5)',
               visibility: 'visible',
@@ -227,7 +190,7 @@ export default function ExperiencePage() {
         </div>
 
         {/* Experience Timeline */}
-        <div className="max-w-6xl mx-auto opacity-100" style={{ visibility: 'visible' }}>
+        <div className="max-w-5xl mx-auto opacity-100" style={{ visibility: 'visible' }}>
           <ExperienceList />
         </div>
       </div>
