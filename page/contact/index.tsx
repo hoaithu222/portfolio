@@ -93,7 +93,7 @@ export default function ContactPage() {
   const titleRef = useRef<HTMLHeadingElement>(null)
   const subtitleRef = useRef<HTMLParagraphElement>(null)
   const floatingElementsRef = useRef<HTMLDivElement>(null)
-  const t = useTranslations('profile')
+  const t = useTranslations('contact')
 
   useGSAP(() => {
     if (!sectionRef.current) return
@@ -213,7 +213,7 @@ export default function ContactPage() {
               visibility: 'visible',
             }}
           >
-            Liên hệ
+            {t('title')}
           </h1>
           <p 
             ref={subtitleRef}
@@ -223,7 +223,7 @@ export default function ContactPage() {
               visibility: 'visible',
             }}
           >
-            Hãy liên hệ với tôi nếu bạn có bất kỳ câu hỏi hoặc cơ hội hợp tác nào
+            {t('subtitle')}
           </p>
         </div>
 

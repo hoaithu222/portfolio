@@ -57,20 +57,9 @@ function FloatingElements({ floatingElementsRef }: { floatingElementsRef: React.
   )
 }
 
-// Animated Grid Background
+// Animated Grid Background - disabled for faster initial render
 function AnimatedGrid() {
   const gridRef = useRef<HTMLDivElement>(null)
-
-  useGSAP(() => {
-    if (!gridRef.current) return
-
-    gsap.to(gridRef.current, {
-      backgroundPosition: '60px 60px',
-      duration: 25,
-      repeat: -1,
-      ease: 'none',
-    })
-  }, {})
 
   return (
     <div 
@@ -97,7 +86,7 @@ export default function ExperiencePage() {
   useGSAP(() => {
     if (!sectionRef.current) return
 
-    // Title animation
+    // Title animation - simplified for faster initial render
     if (titleRef.current) {
       gsap.set(titleRef.current, {
         opacity: 1,
@@ -106,38 +95,22 @@ export default function ExperiencePage() {
 
       gsap.from(titleRef.current, {
         opacity: 0,
-        y: -50,
-        scale: 0.9,
-        filter: 'blur(10px)',
-        duration: 1,
-        ease: 'power3.out',
-      })
-
-      // Continuous gradient animation
-      gsap.to(titleRef.current, {
-        backgroundPosition: '200% 0',
-        duration: 5,
-        repeat: -1,
-        ease: 'none',
+        duration: 0.5,
+        ease: 'power2.out',
       })
     }
 
-    // Subtitle animation
+    // Subtitle animation - simplified
     if (subtitleRef.current) {
       gsap.set(subtitleRef.current, {
         opacity: 1,
-        y: 0,
-        scale: 1,
-        filter: 'blur(0px)',
+        visibility: 'visible',
       })
       gsap.from(subtitleRef.current, {
         opacity: 0,
-        y: 30,
-        scale: 0.95,
-        filter: 'blur(8px)',
-        duration: 1,
-        delay: 0.3,
-        ease: 'power3.out',
+        duration: 0.5,
+        delay: 0.1,
+        ease: 'power2.out',
       })
     }
   }, { scope: sectionRef })

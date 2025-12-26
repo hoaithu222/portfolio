@@ -63,7 +63,7 @@ function ExperienceCard({ job, index, isLast }: ExperienceCardProps) {
     if (!cardRef.current) return
 
     const card = cardRef.current
-    // Ensure card is visible and only lightweight entrance
+    // Simplified animation for faster initial render
     gsap.set(card, {
       opacity: 1,
       y: 0,
@@ -72,8 +72,7 @@ function ExperienceCard({ job, index, isLast }: ExperienceCardProps) {
 
     gsap.from(card, {
       opacity: 0,
-      y: 40,
-      duration: 0.7,
+      duration: 0.4,
       ease: 'power2.out',
       scrollTrigger: {
         trigger: card,
