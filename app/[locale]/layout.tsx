@@ -10,27 +10,35 @@ import Footer from '@/components/footer'
 import ScrollToTop from '@/components/common/ScrollToTop'
 import PointerTrail from '@/components/common/PointerTrail'
 import SmoothScroll from '@/components/common/SmoothScroll'
+import { WebVitals } from '@/components/common/WebVitals'
+
 
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
   subsets: ["latin"],
+  display: 'swap', // Optimize font loading
+  preload: true,
+  fallback: ['system-ui', 'arial'],
 });
 
 const geistMono = Geist_Mono({
   variable: "--font-geist-mono",
   subsets: ["latin"],
+  display: 'swap', // Optimize font loading
+  preload: true,
+  fallback: ['monospace'],
 });
 
 // Generate metadata based on locale
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
   const { locale } = await params
-  
+
   const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://hoaithu222.github.io'
   const twitterHandle = process.env.NEXT_PUBLIC_TWITTER_HANDLE || '@hoaithu222'
-  
+
   const siteName = 'Vũ Thị Hoài Thu - Front-end Developer'
-  const title = locale === 'vi' 
+  const title = locale === 'vi'
     ? 'Vũ Thị Hoài Thu - Lập trình viên Front-end | Portfolio'
     : 'Vu Thi Hoai Thu - Front-end Developer | Portfolio'
   const description = locale === 'vi'
@@ -38,7 +46,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     : 'Portfolio of Vu Thi Hoai Thu - Professional Front-end Developer. Specializing in high-performance web applications and interactive dashboards with React, Next.js, TypeScript.'
   const url = `${baseUrl}/${locale}`
   const imageUrl = process.env.NEXT_PUBLIC_OG_IMAGE_URL || `${baseUrl}/og-image.jpg`
-  
+
   return {
     title: {
       default: title,
@@ -111,7 +119,7 @@ export default async function LocaleLayout({
   params: Promise<{ locale: string }>
 }) {
   const { locale } = await params
-  
+
   // Validate locale
   if (!['en', 'vi'].includes(locale)) {
     notFound()
@@ -162,17 +170,18 @@ export default async function LocaleLayout({
         <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
         <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
         <link rel="manifest" href="/site.webmanifest" />
-        
+
         {/* Structured Data */}
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
         />
       </head>
-      <body 
+      <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased pt-16 md:pt-20`}
         suppressHydrationWarning
       >
+        <WebVitals />
         <ThemeProvider>
           <AppStoreProvider locale={locale}>
             <NextIntlClientProvider locale={locale} messages={messages}>

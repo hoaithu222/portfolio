@@ -1,11 +1,12 @@
 'use client'
 
-import { useRef } from 'react'
+import { useRef, useEffect } from 'react'
 import { useGSAP } from '@gsap/react'
 import gsap from 'gsap'
 
 export default function HorizontalTextScroll() {
   const containerRef = useRef<HTMLDivElement>(null)
+  const tweenRef = useRef<gsap.core.Tween | null>(null)
 
   useGSAP(() => {
     if (!containerRef.current) return
@@ -15,7 +16,7 @@ export default function HorizontalTextScroll() {
     const text = containerRef.current.querySelector('.scroll-text')
     if (!text) return
 
-    gsap.to(text, {
+    const tween = gsap.to(text, {
       xPercent: -50,
       duration: 20,
       repeat: -1,
@@ -24,7 +25,22 @@ export default function HorizontalTextScroll() {
         xPercent: gsap.utils.wrap(-50, 0)
       }
     })
+    tweenRef.current = tween
+    return () => {
+      tween.kill()
+      tweenRef.current = null
+    }
   }, { scope: containerRef })
+
+  useEffect(() => {
+    const onVisibilityChange = () => {
+      if (document.visibilityState === 'visible' && tweenRef.current) {
+        tweenRef.current.play()
+      }
+    }
+    document.addEventListener('visibilitychange', onVisibilityChange)
+    return () => document.removeEventListener('visibilitychange', onVisibilityChange)
+  }, [])
 
   const skills = [
     'React', 'Next.js', 'TypeScript', 'JavaScript', 'Tailwind CSS',

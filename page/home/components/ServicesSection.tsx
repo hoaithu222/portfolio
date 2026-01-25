@@ -252,6 +252,25 @@ function ServicesSection() {
     }
   }, { scope: sectionRef, dependencies: [handleMouseEnter, handleMouseLeave] })
 
+  // Fix: Khi chuyển tab rồi quay lại, ScrollTrigger có thể không resume đúng → nội dung kẹt opacity 0.
+  useEffect(() => {
+    const onVisibilityChange = () => {
+      if (document.visibilityState !== 'visible') return
+      ScrollTrigger.refresh()
+      const section = sectionRef.current
+      const title = titleRef.current
+      const cards = cardsRef.current
+      if (!section || !title || !cards) return
+      const rect = section.getBoundingClientRect()
+      const inView = rect.top < window.innerHeight && rect.bottom > 0
+      if (!inView) return
+      gsap.set(title.children, { opacity: 1, y: 0 })
+      gsap.set(cards.children, { opacity: 1, y: 0, scale: 1 })
+    }
+    document.addEventListener('visibilitychange', onVisibilityChange)
+    return () => document.removeEventListener('visibilitychange', onVisibilityChange)
+  }, [])
+
   return (
     <section 
       ref={sectionRef}

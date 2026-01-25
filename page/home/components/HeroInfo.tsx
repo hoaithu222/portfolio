@@ -2,17 +2,36 @@
 
 import { useGSAP } from '@gsap/react'
 import gsap from 'gsap'
-import { useRef } from 'react'
+import { useRef, useEffect } from 'react'
 import { useTranslations } from 'next-intl'
 import Link from 'next/link'
 import { useLocale } from 'next-intl'
 import { getCVPath, getCVFileName } from '@/lib/utils/cv'
 import { saveAs } from 'file-saver'
 
+const HERO_SELECTORS = ['.hero-greeting', '.hero-emoji', '.hero-headline', '.hero-subheadline']
+
 export default function HeroInfo() {
   const ref = useRef<HTMLDivElement>(null)
   const t = useTranslations('hero')
   const locale = useLocale()
+
+  // Fix: Khi chuyển tab rồi quay lại, browser pause GSAP → nội dung có thể kẹt opacity 0.
+  // Force hiển thị lại khi tab visible.
+  useEffect(() => {
+    const onVisibilityChange = () => {
+      if (document.visibilityState !== 'visible' || !ref.current) return
+      const scope = ref.current
+      const targets = HERO_SELECTORS.flatMap((sel) =>
+        Array.from(scope.querySelectorAll(sel))
+      ).filter(Boolean)
+      if (targets.length) {
+        gsap.set(targets, { opacity: 1, y: 0, x: 0, scale: 1, rotation: 0 })
+      }
+    }
+    document.addEventListener('visibilitychange', onVisibilityChange)
+    return () => document.removeEventListener('visibilitychange', onVisibilityChange)
+  }, [])
 
   // Handle CV download
   const handleDownloadCV = async (e: React.MouseEvent<HTMLAnchorElement>) => {

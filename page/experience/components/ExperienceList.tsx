@@ -63,23 +63,26 @@ function ExperienceCard({ job, index, isLast }: ExperienceCardProps) {
     if (!cardRef.current) return
 
     const card = cardRef.current
-    // Simplified animation for faster initial render
-    gsap.set(card, {
-      opacity: 1,
-      y: 0,
-      visibility: 'visible',
-    })
 
-    gsap.from(card, {
-      opacity: 0,
-      duration: 0.4,
-      ease: 'power2.out',
-      scrollTrigger: {
-        trigger: card,
-        start: 'top 90%',
-        toggleActions: 'play none none none',
+    gsap.fromTo(card,
+      {
+        opacity: 0,
+        y: 50,
+        visibility: 'hidden'
       },
-    })
+      {
+        opacity: 1,
+        y: 0,
+        visibility: 'visible',
+        duration: 0.5,
+        ease: 'power2.out',
+        scrollTrigger: {
+          trigger: card,
+          start: 'top 95%',
+          toggleActions: 'play none none none',
+        },
+      }
+    )
   }, { scope: cardRef, dependencies: [index] })
 
   const techStackItems = useMemo(() => {

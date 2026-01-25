@@ -1,8 +1,20 @@
 'use client'
 
-import { useRef, useMemo, memo } from 'react'
-import { Canvas, useFrame } from '@react-three/fiber'
+import { useRef, useMemo, memo, useEffect } from 'react'
+import { Canvas, useFrame, useThree } from '@react-three/fiber'
 import * as THREE from 'three'
+
+function VisibilityInvalidate() {
+  const invalidate = useThree((s) => s.invalidate)
+  useEffect(() => {
+    const onVis = () => {
+      if (document.visibilityState === 'visible') invalidate()
+    }
+    document.addEventListener('visibilitychange', onVis)
+    return () => document.removeEventListener('visibilitychange', onVis)
+  }, [invalidate])
+  return null
+}
 
 const FloatingParticle = memo(function FloatingParticle({ 
   position, 
@@ -78,6 +90,7 @@ export default memo(function ServicesBackground() {
         gl={{ antialias: false, alpha: true }}
         dpr={[1, 2]} // Tối ưu DPR
       >
+        <VisibilityInvalidate />
         <ParticlesScene />
       </Canvas>
     </div>
